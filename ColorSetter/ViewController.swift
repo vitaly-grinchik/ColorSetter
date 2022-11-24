@@ -19,8 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
-    // Buttons
-    @IBOutlet weak var resetButton: UIButton!
     
     // MARK: - Private properties
     private let initialSlidersValue: Float = 0.3

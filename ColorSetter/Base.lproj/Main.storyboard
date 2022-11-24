@@ -125,7 +125,6 @@
                         <outlet property="greenValueLabel" destination="iBR-MX-B8K" id="oAU-2l-7Ih"/>
                         <outlet property="redSlider" destination="bAs-nx-ba6" id="lda-RC-fIf"/>
                         <outlet property="redValueLabel" destination="UbL-7r-7Ym" id="mqR-HW-1bU"/>
-                        <outlet property="resetButton" destination="uE4-Yk-pi1" id="oPe-tI-oIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
