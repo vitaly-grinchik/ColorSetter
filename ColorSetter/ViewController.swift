@@ -23,12 +23,40 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupSliders()
+        setBoxColor()
     }
     
     @IBAction func sliderMoved() {
+        setBoxColor()
+    }
+    
+    private func getCurrentColor() -> UIColor {
+        return UIColor(cgColor: CGColor(
+                red: CGFloat(redSlider.value),
+                green: CGFloat(greenSlider.value),
+                blue: CGFloat(blueSlider.value),
+                alpha: 1.0
+            )
+        )
+    }
+    
+    private func setBoxColor() {
+        colorBoxView.layer.borderColor = UIColor.black.cgColor
+        colorBoxView.layer.borderWidth = 4
+        colorBoxView.layer.cornerRadius = 15
+        colorBoxView.backgroundColor = getCurrentColor()
+    }
+    
+    private func setupSliders() {
+        redSlider.value = 0
+        greenSlider.value = 0
+        blueSlider.value = 0
+        
+        redSlider.minimumTrackTintColor = .red
+        greenSlider.minimumTrackTintColor = .green
+        blueSlider.minimumTrackTintColor = .blue
         
     }
-
 }
 
