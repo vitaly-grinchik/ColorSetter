@@ -48,17 +48,16 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Private methods
-    private func getFormatedValueString(of value: Float) -> String? {
+    private func getFormatedValueString(of value: Float) -> String {
+        
         let formater = NumberFormatter()
         formater.numberStyle = .decimal
         formater.minimumFractionDigits = 2
         formater.maximumFractionDigits = 2
         
-        if let valueFormated = formater.string(from: NSNumber(value: value)) {
-            return valueFormated
-        } else {
-            return nil
-        }
+        let valueFormated = formater.string(from: NSNumber(value: value)) ?? ""
+        
+        return valueFormated
     }
     
     private func updateUI() {
@@ -70,13 +69,12 @@ class ViewController: UIViewController {
                 alpha: 1.0
             )
         )
+        colorBoxView.backgroundColor = currentColor     // Update box color
+
         // Update color value labels and box color
-        redValueLabel.text = getFormatedValueString(of: redSlider.value) ?? ""
-        greenValueLabel.text = getFormatedValueString(of: greenSlider.value) ?? ""
-        blueValueLabel.text = getFormatedValueString(of: blueSlider.value) ?? ""
-        
-        colorBoxView.backgroundColor = currentColor
-    
+        redValueLabel.text = getFormatedValueString(of: redSlider.value)
+        greenValueLabel.text = getFormatedValueString(of: greenSlider.value)
+        blueValueLabel.text = getFormatedValueString(of: blueSlider.value)
     }
     
     private func setupSlidersWithValue(_ value: Float) {
