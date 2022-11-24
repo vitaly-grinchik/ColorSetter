@@ -77,6 +77,14 @@
                                     <action selector="sliderMoved" destination="BYZ-38-t0r" eventType="valueChanged" id="KDo-kF-uqC"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uE4-Yk-pi1">
+                                <rect key="frame" x="165.66666666666666" y="744" width="59" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="pTv-mS-4p5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -102,8 +110,10 @@
                             <constraint firstItem="E7T-GN-QUQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="iSH-JE-60Q"/>
                             <constraint firstItem="UbL-7r-7Ym" firstAttribute="centerY" secondItem="hf9-fi-Wbw" secondAttribute="centerY" id="iin-yx-vuR"/>
                             <constraint firstItem="iBR-MX-B8K" firstAttribute="leading" secondItem="E7T-GN-QUQ" secondAttribute="leading" constant="66" id="ljv-cN-g0W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uE4-Yk-pi1" secondAttribute="bottom" constant="25" id="qTN-j6-mXL"/>
                             <constraint firstItem="Dmg-Fh-WtS" firstAttribute="leading" secondItem="E7T-GN-QUQ" secondAttribute="leading" constant="118" id="w6s-0c-cuh"/>
                             <constraint firstItem="bAs-nx-ba6" firstAttribute="leading" secondItem="E7T-GN-QUQ" secondAttribute="leading" constant="118" id="woc-f8-GYA"/>
+                            <constraint firstItem="uE4-Yk-pi1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="x1J-A3-bB6"/>
                             <constraint firstItem="E7T-GN-QUQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yVW-ab-bVV"/>
                         </constraints>
                     </view>
@@ -115,6 +125,7 @@
                         <outlet property="greenValueLabel" destination="iBR-MX-B8K" id="oAU-2l-7Ih"/>
                         <outlet property="redSlider" destination="bAs-nx-ba6" id="lda-RC-fIf"/>
                         <outlet property="redValueLabel" destination="UbL-7r-7Ym" id="mqR-HW-1bU"/>
+                        <outlet property="resetButton" destination="uE4-Yk-pi1" id="oPe-tI-oIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
