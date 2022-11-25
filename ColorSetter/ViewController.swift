@@ -31,17 +31,18 @@ class ViewController: UIViewController {
         colorBoxView.layer.borderWidth = 4
         colorBoxView.layer.cornerRadius = 15
         
-        setupSlidersWithValue(initialSlidersValue)
+        setupSlidersWithValue()
         updateBoxColor()
     }
     
     // MARK: - IB Actions
     @IBAction func sliderMoved() {
         updateBoxColor()
+        updateSliderValueLabels()
     }
     
     @IBAction func resetButtonTapped() {
-        setupSlidersWithValue(initialSlidersValue)
+        setupSlidersWithValue()
         updateBoxColor()
     }
     
@@ -64,10 +65,10 @@ class ViewController: UIViewController {
         blueValueLabel.text = String(format: "%.2f", blueSlider.value)
     }
     
-    private func setupSlidersWithValue(_ value: Float) {
-        redSlider.value = value
-        greenSlider.value = value
-        blueSlider.value = value
+    private func setupSlidersWithValue() {
+        redSlider.value = initialSlidersValue
+        greenSlider.value = initialSlidersValue
+        blueSlider.value = initialSlidersValue
         
         redSlider.minimumTrackTintColor = .red
         greenSlider.minimumTrackTintColor = .green
