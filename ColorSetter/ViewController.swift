@@ -32,33 +32,21 @@ class ViewController: UIViewController {
         colorBoxView.layer.cornerRadius = 15
         
         setupSlidersWithValue(initialSlidersValue)
-        updateUI()
+        updateBoxColor()
     }
     
     // MARK: - IB Actions
     @IBAction func sliderMoved() {
-        updateUI()
+        updateBoxColor()
     }
     
     @IBAction func resetButtonTapped() {
         setupSlidersWithValue(initialSlidersValue)
-        updateUI()
+        updateBoxColor()
     }
     
     // MARK: - Private methods
-    private func getFormatedValueString(of value: Float) -> String {
-        
-        let formater = NumberFormatter()
-        formater.numberStyle = .decimal
-        formater.minimumFractionDigits = 2
-        formater.maximumFractionDigits = 2
-        
-        let valueFormated = formater.string(from: NSNumber(value: value)) ?? ""
-        
-        return valueFormated
-    }
-    
-    private func updateUI() {
+    private func updateBoxColor() {
         let currentColor = UIColor(
             cgColor: CGColor(
                 red: CGFloat(redSlider.value),
@@ -67,12 +55,13 @@ class ViewController: UIViewController {
                 alpha: 1.0
             )
         )
-        colorBoxView.backgroundColor = currentColor     // Update box color
-
-        // Update color value labels and box color
-        redValueLabel.text = getFormatedValueString(of: redSlider.value)
-        greenValueLabel.text = getFormatedValueString(of: greenSlider.value)
-        blueValueLabel.text = getFormatedValueString(of: blueSlider.value)
+        colorBoxView.backgroundColor = currentColor
+    }
+    
+    private func updateSliderValueLabels() {
+        redValueLabel.text = String(format: "%.2f", redSlider.value)
+        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
     }
     
     private func setupSlidersWithValue(_ value: Float) {
