@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init view of color box
-        colorBoxView.layer.borderColor = UIColor.black.cgColor
+        colorBoxView.layer.borderColor = UIColor.systemBlue.cgColor
         colorBoxView.layer.borderWidth = 4
         colorBoxView.layer.cornerRadius = 15
         
