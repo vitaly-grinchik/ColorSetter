@@ -30,8 +30,12 @@ class ViewController: UIViewController {
         colorBoxView.layer.borderColor = UIColor.systemBlue.cgColor
         colorBoxView.layer.borderWidth = 4
         colorBoxView.layer.cornerRadius = 15
+        // Init view of sliders
+        redSlider.minimumTrackTintColor = .red
+        greenSlider.minimumTrackTintColor = .green
+        blueSlider.minimumTrackTintColor = .blue
         
-        setupSlidersWithValue()
+        resetSliders()
         updateBoxColor()
     }
     
@@ -42,7 +46,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetButtonTapped() {
-        setupSlidersWithValue()
+        resetSliders()
         updateBoxColor()
     }
     
@@ -67,13 +71,13 @@ class ViewController: UIViewController {
         }
     }
     
-    private func setupSlidersWithValue() {
+    private func resetSliders() {
         redSlider.value = initialSlidersValue
         greenSlider.value = initialSlidersValue
         blueSlider.value = initialSlidersValue
         
-        redSlider.minimumTrackTintColor = .red
-        greenSlider.minimumTrackTintColor = .green
-        blueSlider.minimumTrackTintColor = .blue
+        updateValueLabelFor(redSlider)
+        updateValueLabelFor(greenSlider)
+        updateValueLabelFor(blueSlider)
     }
 }
