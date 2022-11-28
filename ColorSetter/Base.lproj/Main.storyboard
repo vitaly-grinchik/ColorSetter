@@ -95,19 +95,19 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bAs-nx-ba6" userLabel="Red Slider">
                                                         <rect key="frame" x="-2" y="0.0" width="239" height="31"/>
                                                         <connections>
-                                                            <action selector="sliderMoved" destination="BYZ-38-t0r" eventType="valueChanged" id="CvF-Wr-rLM"/>
+                                                            <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ihc-G7-aQg"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="d7i-LS-0Kw" userLabel="Green Slider">
                                                         <rect key="frame" x="-2" y="38" width="239" height="31"/>
                                                         <connections>
-                                                            <action selector="sliderMoved" destination="BYZ-38-t0r" eventType="valueChanged" id="Vyp-6L-Iyg"/>
+                                                            <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="tjZ-6v-m13"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dmg-Fh-WtS" userLabel="Blue Slider">
                                                         <rect key="frame" x="-2" y="76" width="239" height="31"/>
                                                         <connections>
-                                                            <action selector="sliderMoved" destination="BYZ-38-t0r" eventType="valueChanged" id="KDo-kF-uqC"/>
+                                                            <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="3e5-Kg-DMg"/>
                                                         </connections>
                                                     </slider>
                                                 </subviews>

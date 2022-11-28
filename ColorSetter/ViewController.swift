@@ -36,9 +36,9 @@ class ViewController: UIViewController {
     }
     
     // MARK: - IB Actions
-    @IBAction func sliderMoved() {
+    @IBAction func sliderMoved(_ sender: UISlider) {
         updateBoxColor()
-        updateSliderValueLabels()
+        updateValueLabelFor(sender)
     }
     
     @IBAction func resetButtonTapped() {
@@ -59,10 +59,12 @@ class ViewController: UIViewController {
         colorBoxView.backgroundColor = currentColor
     }
     
-    private func updateSliderValueLabels() {
-        redValueLabel.text = String(format: "%.2f", redSlider.value)
-        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
-        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+    private func updateValueLabelFor(_ slider: UISlider) {
+        switch slider {
+        case redSlider: redValueLabel.text = String(format: "%.2f", slider.value)
+        case greenSlider:  greenValueLabel.text = String(format: "%.2f", slider.value)
+        default: blueValueLabel.text = String(format: "%.2f", slider.value)
+        }
     }
     
     private func setupSlidersWithValue() {
