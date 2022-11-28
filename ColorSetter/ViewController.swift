@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var blueSlider: UISlider!
     
     // MARK: - Private properties
-    private let initialSlidersValue: Float = 0.3
+    private let initialSlidersValue: Float = 0.5
     
     // MARK: - Override methods
     override func viewDidLoad() {
