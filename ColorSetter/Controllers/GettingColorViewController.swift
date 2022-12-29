@@ -26,21 +26,23 @@ class GettingColorViewController: UIViewController {
     
     
     // MARK: - Private properties
-    private let initialSlidersValue: Float = 0.5
+    
     
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Init view of color box
-        colorBoxView.layer.borderColor = UIColor.systemBlue.cgColor
-        colorBoxView.layer.borderWidth = 4
-        colorBoxView.layer.cornerRadius = 15
-        // Init view of sliders
-        redSlider.minimumTrackTintColor = .red
-        greenSlider.minimumTrackTintColor = .green
-        blueSlider.minimumTrackTintColor = .blue
+
+        setupColorBox()
+        setupSliders()
+        setupTextFeilds()
         
         updateBoxColor()
+    }
+    
+    // To remove keyboard if not needed
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     // MARK: - IB Actions
@@ -48,11 +50,7 @@ class GettingColorViewController: UIViewController {
         updateBoxColor()
         updateValueLabel(of: sender)
     }
-    
-    @IBAction func resetButtonTapped() {
-        updateBoxColor()
-    }
-    
+  
     // MARK: - Private methods
     private func updateBoxColor() {
         let currentColor = UIColor(
@@ -74,5 +72,28 @@ class GettingColorViewController: UIViewController {
         }
     }
     
+    // Init view of color box
+    private func setupColorBox() {
+        colorBoxView.layer.borderColor = UIColor.systemBlue.cgColor
+        colorBoxView.layer.borderWidth = 4
+        colorBoxView.layer.cornerRadius = 15
+    }
+    
+    private func setupSliders() {
+        redSlider.minimumTrackTintColor = .red
+        greenSlider.minimumTrackTintColor = .green
+        blueSlider.minimumTrackTintColor = .blue
+    }
+    
+    private func setupTextFeilds() {
+        [redValueTextField, greenValueTextField, blueValueTextField].forEach { textFiled in
+            textFiled?.keyboardType = .decimalPad
+            textFiled?.clearsOnBeginEditing = true
+            textFiled?.returnKeyType = .done
+        }
+    }
+}
+
+extension GettingColorViewController: UITextFieldDelegate {
     
 }
