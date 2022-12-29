@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GettingColorViewController.swift
 //  ColorSetter
 //
 //  Created by Виталий Гринчик on 24.11.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GettingColorViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet weak var colorBoxView: UIView!
@@ -19,6 +19,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
+    // Text Fields
+    @IBOutlet var redValueTextField: UITextField!
+    @IBOutlet var greenValueTextField: UITextField!
+    @IBOutlet var blueValueTextField: UITextField!
+    
     
     // MARK: - Private properties
     private let initialSlidersValue: Float = 0.5
@@ -69,15 +74,5 @@ class ViewController: UIViewController {
         case greenSlider:  greenValueLabel.text = String(format: "%.2f", slider.value)
         default: blueValueLabel.text = String(format: "%.2f", slider.value)
         }
-    }
-    
-    private func resetSliders() {
-        redSlider.value = initialSlidersValue
-        greenSlider.value = initialSlidersValue
-        blueSlider.value = initialSlidersValue
-        
-        updateValueLabel(of: redSlider)
-        updateValueLabel(of: greenSlider)
-        updateValueLabel(of: blueSlider)
     }
 }
