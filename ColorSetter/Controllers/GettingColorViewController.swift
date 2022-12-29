@@ -40,7 +40,6 @@ class GettingColorViewController: UIViewController {
         greenSlider.minimumTrackTintColor = .green
         blueSlider.minimumTrackTintColor = .blue
         
-        resetSliders()
         updateBoxColor()
     }
     
@@ -51,7 +50,6 @@ class GettingColorViewController: UIViewController {
     }
     
     @IBAction func resetButtonTapped() {
-        resetSliders()
         updateBoxColor()
     }
     
@@ -75,4 +73,6 @@ class GettingColorViewController: UIViewController {
         default: blueValueLabel.text = String(format: "%.2f", slider.value)
         }
     }
+    
+    
 }
