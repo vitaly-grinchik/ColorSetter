@@ -177,7 +177,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LE-F9-eST">
-                                <rect key="frame" x="314" y="94" width="26" height="24"/>
+                                <rect key="frame" x="348" y="60" width="26" height="24"/>
                                 <state key="normal">
                                     <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large"/>
                                 </state>
@@ -188,8 +188,8 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SXy-CQ-F7C"/>
                         <constraints>
-                            <constraint firstItem="SXy-CQ-F7C" firstAttribute="trailing" secondItem="4LE-F9-eST" secondAttribute="trailing" constant="50" id="O1y-fG-Awo"/>
-                            <constraint firstItem="4LE-F9-eST" firstAttribute="top" secondItem="SXy-CQ-F7C" secondAttribute="top" constant="50" id="j0y-c4-9w4"/>
+                            <constraint firstItem="SXy-CQ-F7C" firstAttribute="trailing" secondItem="4LE-F9-eST" secondAttribute="trailing" constant="16" id="O1y-fG-Awo"/>
+                            <constraint firstItem="4LE-F9-eST" firstAttribute="top" secondItem="SXy-CQ-F7C" secondAttribute="top" constant="16" id="j0y-c4-9w4"/>
                         </constraints>
                     </view>
                     <connections>

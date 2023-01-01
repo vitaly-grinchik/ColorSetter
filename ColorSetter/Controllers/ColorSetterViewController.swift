@@ -29,7 +29,9 @@ class ColorSetterViewController: UIViewController {
     private enum ColorComponent: CaseIterable {
         case red, green, blue
     }
-       
+    
+    private var textFiledPreviousValue = ""
+    
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,24 +164,36 @@ class ColorSetterViewController: UIViewController {
 
 // MARK: - UITextFieldDelegate
 extension ColorSetterViewController: UITextFieldDelegate {
-
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textFiledPreviousValue = textField.text ?? ""
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let newValue = CGFloat(Float(textField.text ?? "0.00") ?? 0)
+        let newValue = CGFloat(Float(textField.text ?? "") ?? 2)
+        
+        if newValue < 0 || newValue > 1 {
+            textField.text = textFiledPreviousValue
+            return
+        }
         
         switch textField {
         case redValueTextField:
             updateCurrentColor(for: .red, on: newValue)
             updateUIElement(redValueLabel)
             updateUIElement(redSlider)
-    
+            updateUIElement(redValueTextField)
         case greenValueTextField:
             updateCurrentColor(for: .green, on: newValue)
             updateUIElement(greenValueLabel)
             updateUIElement(greenSlider)
+            updateUIElement(greenValueTextField)
         default:
             updateCurrentColor(for: .blue, on: newValue)
             updateUIElement(blueValueLabel)
             updateUIElement(blueSlider)
+            updateUIElement(blueValueTextField)
         }
         updateBoxColor()
     }
