@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80670A5295E38BF00DCCC59 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80670A4295E38BF00DCCC59 /* StartViewController.swift */; };
 		D8E51C3D292F76EB00AD5174 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51C3C292F76EB00AD5174 /* AppDelegate.swift */; };
 		D8E51C3F292F76EB00AD5174 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51C3E292F76EB00AD5174 /* SceneDelegate.swift */; };
-		D8E51C41292F76EB00AD5174 /* GettingColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51C40292F76EB00AD5174 /* GettingColorViewController.swift */; };
+		D8E51C41292F76EB00AD5174 /* ColorSetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E51C40292F76EB00AD5174 /* ColorSetterViewController.swift */; };
 		D8E51C44292F76EB00AD5174 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E51C42292F76EB00AD5174 /* Main.storyboard */; };
 		D8E51C46292F76F200AD5174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E51C45292F76F200AD5174 /* Assets.xcassets */; };
 		D8E51C49292F76F200AD5174 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E51C47292F76F200AD5174 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D80670A4295E38BF00DCCC59 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		D8E51C39292F76EB00AD5174 /* ColorSetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorSetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E51C3C292F76EB00AD5174 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8E51C3E292F76EB00AD5174 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D8E51C40292F76EB00AD5174 /* GettingColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingColorViewController.swift; sourceTree = "<group>"; };
+		D8E51C40292F76EB00AD5174 /* ColorSetterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetterViewController.swift; sourceTree = "<group>"; };
 		D8E51C43292F76EB00AD5174 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8E51C45292F76F200AD5174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8E51C48292F76F200AD5174 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,7 +42,8 @@
 		D8CE1A01295DFE1E00544F62 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D8E51C40292F76EB00AD5174 /* GettingColorViewController.swift */,
+				D8E51C40292F76EB00AD5174 /* ColorSetterViewController.swift */,
+				D80670A4295E38BF00DCCC59 /* StartViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -161,7 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8E51C41292F76EB00AD5174 /* GettingColorViewController.swift in Sources */,
+				D8E51C41292F76EB00AD5174 /* ColorSetterViewController.swift in Sources */,
+				D80670A5295E38BF00DCCC59 /* StartViewController.swift in Sources */,
 				D8E51C3D292F76EB00AD5174 /* AppDelegate.swift in Sources */,
 				D8E51C3F292F76EB00AD5174 /* SceneDelegate.swift in Sources */,
 			);

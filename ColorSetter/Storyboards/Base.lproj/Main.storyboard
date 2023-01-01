@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P4r-gG-eAf">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Getting Color View Controller-->
+        <!--Color Setter View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GettingColorViewController" customModule="ColorSetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ColorSetterViewController" customModule="ColorSetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,6 +127,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfx-ZD-2Bd">
+                                <rect key="frame" x="166" y="713" width="58" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <segue destination="R0E-Fx-Nk2" kind="unwind" unwindAction="unwindFor:" id="4sd-fU-7F6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.8116381674323736" green="0.99976571998105168" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -136,8 +145,11 @@
                             <constraint firstItem="E7T-GN-QUQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Q6q-hn-X6h"/>
                             <constraint firstAttribute="trailing" secondItem="vha-ao-9JX" secondAttribute="trailing" constant="16" id="W0S-nS-eoG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="E7T-GN-QUQ" secondAttribute="trailing" constant="16" id="WDQ-pF-ySj"/>
+                            <constraint firstItem="lfx-ZD-2Bd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mic-pW-q28"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lfx-ZD-2Bd" secondAttribute="bottom" constant="55" id="oCv-gO-PYn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="T8g-0f-eA5"/>
                     <connections>
                         <outlet property="blueSlider" destination="Dmg-Fh-WtS" id="bLy-uK-0Mo"/>
                         <outlet property="blueValueLabel" destination="d23-ir-Rmh" id="f7H-oD-1Dd"/>
@@ -152,11 +164,45 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="R0E-Fx-Nk2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-292.30769230769232" y="92.417061611374407"/>
+            <point key="canvasLocation" x="183" y="70"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="K16-Dq-Hnt">
+            <objects>
+                <viewController id="P4r-gG-eAf" customClass="StartViewController" customModule="ColorSetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eJf-cH-tTt">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LE-F9-eST">
+                                <rect key="frame" x="314" y="94" width="26" height="24"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="" modalPresentationStyle="fullScreen" id="l8W-No-mjp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SXy-CQ-F7C"/>
+                        <constraints>
+                            <constraint firstItem="SXy-CQ-F7C" firstAttribute="trailing" secondItem="4LE-F9-eST" secondAttribute="trailing" constant="50" id="O1y-fG-Awo"/>
+                            <constraint firstItem="4LE-F9-eST" firstAttribute="top" secondItem="SXy-CQ-F7C" secondAttribute="top" constant="50" id="j0y-c4-9w4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="setColorButton" destination="4LE-F9-eST" id="o0h-Hh-KtD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gqc-Hg-xPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-609" y="71"/>
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
