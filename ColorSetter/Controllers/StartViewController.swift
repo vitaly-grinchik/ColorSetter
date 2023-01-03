@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ColorSetterViewControllerDelegate {
+    func setBackgroundColor(_ color: UIColor)
+}
+
 class StartViewController: UIViewController {
 
     @IBOutlet var setColorButton: UIButton!
@@ -23,11 +27,13 @@ class StartViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let colorSetterVC = segue.destination as? ColorSetterViewController else { return }
         colorSetterVC.currentColor = currentBackGroundColor
+        
     }
-    
-    @IBAction func unwind(for segue: UIStoryboardSegue) {
-        guard let colorSetterVC = segue.source as? ColorSetterViewController else { return }
-        currentBackGroundColor = colorSetterVC.currentColor
+}
+
+// MARK: - ColorSetterViewControllerDelegate
+extension StartViewController: ColorSetterViewControllerDelegate {
+    func setBackgroundColor(_ color: UIColor) {
         view.backgroundColor = currentBackGroundColor
     }
 }

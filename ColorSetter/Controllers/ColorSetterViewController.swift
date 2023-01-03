@@ -153,11 +153,17 @@ class ColorSetterViewController: UIViewController {
     }
     
     private func setupTextFeilds() {
-        [redValueTextField, greenValueTextField, blueValueTextField].forEach { textFiled in
-            textFiled?.delegate = self
-            textFiled?.keyboardType = .decimalPad
-            textFiled?.clearsOnBeginEditing = true
+        [redValueTextField, greenValueTextField, blueValueTextField].forEach {
+            $0?.delegate = self
+            $0?.keyboardType = .decimalPad
+            $0?.clearsOnBeginEditing = true
+            
+            if let textField = $0 {
+                addToolBarForKeyboard(for: textField)
+            }
         }
+        
+     
     }
 }
 
@@ -199,7 +205,7 @@ extension ColorSetterViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - ColorSetterViewController
+// MARK: - UIColor
 private extension UIColor {
     var redValue: CGFloat {
         CIColor(color: self).red
@@ -212,5 +218,21 @@ private extension UIColor {
     }
     var alpha: CGFloat {
         CIColor(color: self).alpha
+    }
+}
+
+extension ColorSetterViewController {
+    private func addToolBarForKeyboard(for textField: UITextField) {
+        let keyboardToolBar = UIToolbar()
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(keyboardDoneButonTapped))
+           
+        keyboardToolBar.items = [space, doneButton]
+        keyboardToolBar.sizeToFit()
+        textField.inputAccessoryView = keyboardToolBar
+    }
+    
+    @objc private func keyboardDoneButonTapped(_ textField: UITextField) {
+//        resignFirstResponder()
     }
 }
