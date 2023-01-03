@@ -27,13 +27,14 @@ class StartViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let colorSetterVC = segue.destination as? ColorSetterViewController else { return }
         colorSetterVC.currentColor = currentBackGroundColor
-        
+        colorSetterVC.delegate = self
     }
 }
 
 // MARK: - ColorSetterViewControllerDelegate
 extension StartViewController: ColorSetterViewControllerDelegate {
     func setBackgroundColor(_ color: UIColor) {
+        currentBackGroundColor = color
         view.backgroundColor = currentBackGroundColor
     }
 }

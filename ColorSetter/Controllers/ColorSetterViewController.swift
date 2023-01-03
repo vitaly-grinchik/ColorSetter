@@ -24,13 +24,17 @@ class ColorSetterViewController: UIViewController {
     @IBOutlet var greenValueTextField: UITextField!
     @IBOutlet var blueValueTextField: UITextField!
     
+    // MARK: - Public properties
     var currentColor: UIColor!
     
-    private enum ColorComponent: CaseIterable {
+    var delegate: ColorSetterViewControllerDelegate!
+    
+    // MARK: - Private
+    private var textFiledPreviousValue = "" // "Буфер" для хранения текстового значения до его стирания
+
+    private enum ColorComponent {
         case red, green, blue
     }
-    
-    private var textFiledPreviousValue = ""
     
     // MARK: - Override methods
     override func viewDidLoad() {
@@ -76,6 +80,11 @@ class ColorSetterViewController: UIViewController {
         updateBoxColor()
     }
   
+    @IBAction func doneButtonTapped() {
+        delegate.setBackgroundColor(currentColor)
+        dismiss(animated: true)
+    }
+    
     // MARK: - Private methods
     private func setupUI() {
         updateBoxColor()
@@ -159,7 +168,7 @@ class ColorSetterViewController: UIViewController {
             $0?.clearsOnBeginEditing = true
             
             if let textField = $0 {
-                addToolBarForKeyboard(for: textField)
+                addKeyboardToolBar(for: textField)
             }
         }
         
@@ -171,6 +180,7 @@ class ColorSetterViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension ColorSetterViewController: UITextFieldDelegate {
     
+    // To memorize current textfield value before its editing
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textFiledPreviousValue = textField.text ?? ""
         return true
@@ -221,8 +231,9 @@ private extension UIColor {
     }
 }
 
+// MARK: - ColorSetterViewController
 extension ColorSetterViewController {
-    private func addToolBarForKeyboard(for textField: UITextField) {
+    private func addKeyboardToolBar(for textField: UITextField) {
         let keyboardToolBar = UIToolbar()
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(keyboardDoneButonTapped))
@@ -232,7 +243,7 @@ extension ColorSetterViewController {
         textField.inputAccessoryView = keyboardToolBar
     }
     
-    @objc private func keyboardDoneButonTapped(_ textField: UITextField) {
-//        resignFirstResponder()
+    @objc private func keyboardDoneButonTapped() {
+        view.endEditing(true)
     }
 }
