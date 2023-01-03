@@ -41,18 +41,7 @@ class ColorSetterViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-    
-        [redValueLabel,
-         redSlider,
-         redValueTextField,
-         
-         greenValueLabel,
-         greenSlider,
-         greenValueTextField,
-         
-        blueValueLabel,
-        blueSlider,
-        blueValueTextField].forEach { updateUIElement($0) }
+        updateBoxColor()
     }
     
     // Remove keyboard if not needed
@@ -63,19 +52,20 @@ class ColorSetterViewController: UIViewController {
     
     // MARK: - IB Actions
     @IBAction func sliderMoved(_ sender: UISlider) {
+        let newValue = CGFloat(sender.value)
         switch sender {
         case redSlider:
-            updateCurrentColor(for: .red, on: CGFloat(sender.value))
-            updateUIElement(redValueLabel)
-            updateUIElement(redValueTextField)
+            updateCurrentColor(for: .red, on: newValue)
+            updateUIView(redValueLabel)
+            updateUIView(redValueTextField)
         case greenSlider:
-            updateCurrentColor(for: .green, on: CGFloat(sender.value))
-            updateUIElement(greenValueLabel)
-            updateUIElement(greenValueTextField)
+            updateCurrentColor(for: .green, on: newValue)
+            updateUIView(greenValueLabel)
+            updateUIView(greenValueTextField)
         default:
-            updateCurrentColor(for: .blue, on: CGFloat(sender.value))
-            updateUIElement(blueValueLabel)
-            updateUIElement(blueValueTextField)
+            updateCurrentColor(for: .blue, on: newValue)
+            updateUIView(blueValueLabel)
+            updateUIView(blueValueTextField)
         }
         updateBoxColor()
     }
@@ -87,10 +77,23 @@ class ColorSetterViewController: UIViewController {
     
     // MARK: - Private methods
     private func setupUI() {
-        updateBoxColor()
+        
         setupColorBox()
         setupSliders()
         setupTextFeilds()
+        
+       // Set init values
+        [redValueLabel,
+         redSlider,
+         redValueTextField,
+         
+         greenValueLabel,
+         greenSlider,
+         greenValueTextField,
+         
+         blueValueLabel,
+         blueSlider,
+         blueValueTextField].forEach { updateUIView($0) }
     }
     
     private func updateBoxColor() {
@@ -118,9 +121,9 @@ class ColorSetterViewController: UIViewController {
         currentColor = newColor
     }
     
-    private func updateUIElement(_ element: Any?) {
+    private func updateUIView(_ view: Any?) {
 
-        switch element {
+        switch view {
         case let label as UILabel:
             switch label {
             case redValueLabel:
@@ -171,8 +174,6 @@ class ColorSetterViewController: UIViewController {
                 addKeyboardToolBar(for: textField)
             }
         }
-        
-     
     }
 }
 
@@ -187,9 +188,10 @@ extension ColorSetterViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        // Prevent to enter invalid value
         let newValue = CGFloat(Float(textField.text ?? "") ?? 2)
         
-        if newValue < 0 || newValue > 1 {
+        if newValue > 1 {
             textField.text = textFiledPreviousValue
             return
         }
@@ -197,19 +199,19 @@ extension ColorSetterViewController: UITextFieldDelegate {
         switch textField {
         case redValueTextField:
             updateCurrentColor(for: .red, on: newValue)
-            updateUIElement(redValueLabel)
-            updateUIElement(redSlider)
-            updateUIElement(redValueTextField)
+            updateUIView(redValueLabel)
+            updateUIView(redSlider)
+            updateUIView(redValueTextField)
         case greenValueTextField:
             updateCurrentColor(for: .green, on: newValue)
-            updateUIElement(greenValueLabel)
-            updateUIElement(greenSlider)
-            updateUIElement(greenValueTextField)
+            updateUIView(greenValueLabel)
+            updateUIView(greenSlider)
+            updateUIView(greenValueTextField)
         default:
             updateCurrentColor(for: .blue, on: newValue)
-            updateUIElement(blueValueLabel)
-            updateUIElement(blueSlider)
-            updateUIElement(blueValueTextField)
+            updateUIView(blueValueLabel)
+            updateUIView(blueSlider)
+            updateUIView(blueValueTextField)
         }
         updateBoxColor()
     }
