@@ -30,7 +30,7 @@ class ColorSetterViewController: UIViewController {
     var delegate: ColorSetterViewControllerDelegate!
     
     // MARK: - Private
-    private var textFiledPreviousValue = "" // "Буфер" для хранения текстового значения до его стирания
+    private var textFiledPreviousValue = "" // "Buffer" to store textfiled value before it's going to be cleared
 
     private enum ColorComponent {
         case red, green, blue
@@ -136,17 +136,24 @@ class ColorSetterViewController: UIViewController {
         
         case let slider as UISlider:
             switch slider {
-            case redSlider: redSlider.value = Float(currentColor.redValue)
-            case greenSlider: greenSlider.value = Float(currentColor.greenValue)
-            default: blueSlider.value = Float(currentColor.blueValue)
+            case redSlider:
+                redSlider.value = Float(currentColor.redValue)
+            case greenSlider:
+                greenSlider.value = Float(currentColor.greenValue)
+            default:
+                blueSlider.value = Float(currentColor.blueValue)
             }
             
         case let textField as UITextField:
             switch textField {
-            case redValueTextField: redValueTextField.text = String(format: "%.2f", currentColor.redValue)
-            case greenValueTextField:  greenValueTextField.text = String(format: "%.2f", currentColor.greenValue)
-            default: blueValueTextField.text = String(format: "%.2f", currentColor.blueValue)
+            case redValueTextField:
+                redValueTextField.text = String(format: "%.2f", currentColor.redValue)
+            case greenValueTextField:
+                greenValueTextField.text = String(format: "%.2f", currentColor.greenValue)
+            default:
+                blueValueTextField.text = String(format: "%.2f", currentColor.blueValue)
             }
+            
         default: break
         }
     }
@@ -217,23 +224,9 @@ extension ColorSetterViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - UIColor
-private extension UIColor {
-    var redValue: CGFloat {
-        CIColor(color: self).red
-    }
-    var greenValue: CGFloat {
-        CIColor(color: self).green
-    }
-    var blueValue: CGFloat {
-        CIColor(color: self).blue
-    }
-    var alpha: CGFloat {
-        CIColor(color: self).alpha
-    }
-}
 
 // MARK: - ColorSetterViewController
+// Add keyboard tool bar
 extension ColorSetterViewController {
     private func addKeyboardToolBar(for textField: UITextField) {
         let keyboardToolBar = UIToolbar()
@@ -247,5 +240,21 @@ extension ColorSetterViewController {
     
     @objc private func keyboardDoneButonTapped() {
         view.endEditing(true)
+    }
+}
+
+// MARK: - UIColor
+private extension UIColor {
+    var redValue: CGFloat {
+        CIColor(color: self).red
+    }
+    var greenValue: CGFloat {
+        CIColor(color: self).green
+    }
+    var blueValue: CGFloat {
+        CIColor(color: self).blue
+    }
+    var alpha: CGFloat {
+        CIColor(color: self).alpha
     }
 }
