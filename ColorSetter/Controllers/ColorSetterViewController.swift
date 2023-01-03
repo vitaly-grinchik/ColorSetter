@@ -26,7 +26,6 @@ class ColorSetterViewController: UIViewController {
     
     // MARK: - Public properties
     var currentColor: UIColor!
-    
     var delegate: ColorSetterViewControllerDelegate!
     
     // MARK: - Private
@@ -39,7 +38,6 @@ class ColorSetterViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
         updateBoxColor()
     }
@@ -58,10 +56,12 @@ class ColorSetterViewController: UIViewController {
             updateCurrentColor(for: .red, on: newValue)
             updateUIView(redValueLabel)
             updateUIView(redValueTextField)
+
         case greenSlider:
             updateCurrentColor(for: .green, on: newValue)
             updateUIView(greenValueLabel)
             updateUIView(greenValueTextField)
+
         default:
             updateCurrentColor(for: .blue, on: newValue)
             updateUIView(blueValueLabel)
