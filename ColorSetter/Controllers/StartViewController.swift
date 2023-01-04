@@ -13,20 +13,13 @@ protocol ColorSetterViewControllerDelegate {
 
 class StartViewController: UIViewController {
 
-    @IBOutlet var setColorButton: UIButton!
-    
-    var currentBackGroundColor: UIColor! = .white
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setColorButton.backgroundColor = .white
-        view.backgroundColor = currentBackGroundColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let colorSetterVC = segue.destination as? ColorSetterViewController else { return }
-        colorSetterVC.currentColor = currentBackGroundColor
+        colorSetterVC.currentColor = view.backgroundColor
         colorSetterVC.delegate = self
     }
 }
@@ -34,7 +27,6 @@ class StartViewController: UIViewController {
 // MARK: - ColorSetterViewControllerDelegate
 extension StartViewController: ColorSetterViewControllerDelegate {
     func setBackgroundColor(_ color: UIColor) {
-        currentBackGroundColor = color
-        view.backgroundColor = currentBackGroundColor
+        view.backgroundColor = color
     }
 }

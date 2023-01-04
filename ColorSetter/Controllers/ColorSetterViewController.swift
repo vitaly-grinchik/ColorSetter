@@ -196,7 +196,7 @@ extension ColorSetterViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         // Prevent to enter invalid value
-        let newValue = CGFloat(Float(textField.text ?? "") ?? 2)
+        let newValue = Double(textField.text ?? "") ?? 2
         
         if newValue > 1 {
             textField.text = textFiledPreviousValue
@@ -205,17 +205,17 @@ extension ColorSetterViewController: UITextFieldDelegate {
         
         switch textField {
         case redValueTextField:
-            updateCurrentColor(for: .red, on: newValue)
+            updateCurrentColor(for: .red, on: CGFloat(newValue))
             updateUIView(redValueLabel)
             updateUIView(redSlider)
             updateUIView(redValueTextField)
         case greenValueTextField:
-            updateCurrentColor(for: .green, on: newValue)
+            updateCurrentColor(for: .green, on: CGFloat(newValue))
             updateUIView(greenValueLabel)
             updateUIView(greenSlider)
             updateUIView(greenValueTextField)
         default:
-            updateCurrentColor(for: .blue, on: newValue)
+            updateCurrentColor(for: .blue, on: CGFloat(newValue))
             updateUIView(blueValueLabel)
             updateUIView(blueSlider)
             updateUIView(blueValueTextField)

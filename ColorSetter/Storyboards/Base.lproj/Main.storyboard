@@ -186,14 +186,12 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SXy-CQ-F7C"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SXy-CQ-F7C" firstAttribute="trailing" secondItem="4LE-F9-eST" secondAttribute="trailing" constant="16" id="O1y-fG-Awo"/>
                             <constraint firstItem="4LE-F9-eST" firstAttribute="top" secondItem="SXy-CQ-F7C" secondAttribute="top" constant="16" id="j0y-c4-9w4"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="setColorButton" destination="4LE-F9-eST" id="o0h-Hh-KtD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gqc-Hg-xPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,6 +202,9 @@
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
