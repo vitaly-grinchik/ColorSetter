@@ -54,18 +54,18 @@ class ColorSetterViewController: UIViewController {
         switch sender {
         case redSlider:
             updateCurrentColor(for: .red, on: newValue)
-            updateUIView(redValueLabel)
-            updateUIView(redValueTextField)
+            update(redValueLabel)
+            update(redValueTextField)
 
         case greenSlider:
             updateCurrentColor(for: .green, on: newValue)
-            updateUIView(greenValueLabel)
-            updateUIView(greenValueTextField)
+            update(greenValueLabel)
+            update(greenValueTextField)
 
         default:
             updateCurrentColor(for: .blue, on: newValue)
-            updateUIView(blueValueLabel)
-            updateUIView(blueValueTextField)
+            update(blueValueLabel)
+            update(blueValueTextField)
         }
         updateBoxColor()
     }
@@ -93,7 +93,7 @@ class ColorSetterViewController: UIViewController {
          
          blueValueLabel,
          blueSlider,
-         blueValueTextField].forEach { updateUIView($0) }
+         blueValueTextField].forEach { update($0) }
     }
     
     private func updateBoxColor() {
@@ -121,17 +121,22 @@ class ColorSetterViewController: UIViewController {
         currentColor = newColor
     }
     
-    private func updateUIView(_ view: Any?) {
+    private func getString(for value: CGFloat) -> String {
+        String(format: "%.2f", value)
+    }
+    
+    
+    private func update(_ view: Any?) {
 
         switch view {
         case let label as UILabel:
             switch label {
             case redValueLabel:
-                redValueLabel.text = String(format: "%.2f", currentColor.redValue)
+                redValueLabel.text = getString(for: currentColor.redValue)
             case greenValueLabel:
-                greenValueLabel.text = String(format: "%.2f", currentColor.greenValue)
+                greenValueLabel.text = getString(for: currentColor.greenValue)
             default:
-                blueValueLabel.text = String(format: "%.2f", currentColor.blueValue)
+                blueValueLabel.text = getString(for: currentColor.blueValue)
             }
         
         case let slider as UISlider:
@@ -147,11 +152,11 @@ class ColorSetterViewController: UIViewController {
         case let textField as UITextField:
             switch textField {
             case redValueTextField:
-                redValueTextField.text = String(format: "%.2f", currentColor.redValue)
+                redValueTextField.text = getString(for: currentColor.redValue)
             case greenValueTextField:
-                greenValueTextField.text = String(format: "%.2f", currentColor.greenValue)
+                greenValueTextField.text = getString(for: currentColor.greenValue)
             default:
-                blueValueTextField.text = String(format: "%.2f", currentColor.blueValue)
+                blueValueTextField.text = getString(for: currentColor.blueValue)
             }
             
         default: break
@@ -183,47 +188,6 @@ class ColorSetterViewController: UIViewController {
         }
     }
 }
-
-
-// MARK: - UITextFieldDelegate
-extension ColorSetterViewController: UITextFieldDelegate {
-    
-    // To memorize current textfield value before its editing
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textFiledPreviousValue = textField.text ?? ""
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        // Prevent to enter invalid value
-        let newValue = Double(textField.text ?? "") ?? 2
-        
-        if newValue > 1 {
-            textField.text = textFiledPreviousValue
-            return
-        }
-        
-        switch textField {
-        case redValueTextField:
-            updateCurrentColor(for: .red, on: CGFloat(newValue))
-            updateUIView(redValueLabel)
-            updateUIView(redSlider)
-            updateUIView(redValueTextField)
-        case greenValueTextField:
-            updateCurrentColor(for: .green, on: CGFloat(newValue))
-            updateUIView(greenValueLabel)
-            updateUIView(greenSlider)
-            updateUIView(greenValueTextField)
-        default:
-            updateCurrentColor(for: .blue, on: CGFloat(newValue))
-            updateUIView(blueValueLabel)
-            updateUIView(blueSlider)
-            updateUIView(blueValueTextField)
-        }
-        updateBoxColor()
-    }
-}
-
 
 // MARK: - ColorSetterViewController
 // Add keyboard tool bar
@@ -258,3 +222,44 @@ private extension UIColor {
         CIColor(color: self).alpha
     }
 }
+
+// MARK: - UITextFieldDelegate
+extension ColorSetterViewController: UITextFieldDelegate {
+    
+    // To memorize current textfield value before its editing
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textFiledPreviousValue = textField.text ?? ""
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // Prevent to enter invalid value
+        let newValue = Double(textField.text ?? "") ?? 2
+        
+        if newValue > 1 {
+            textField.text = textFiledPreviousValue
+            return
+        }
+        
+        switch textField {
+        case redValueTextField:
+            updateCurrentColor(for: .red, on: CGFloat(newValue))
+            update(redValueLabel)
+            update(redSlider)
+            update(redValueTextField)
+        case greenValueTextField:
+            updateCurrentColor(for: .green, on: CGFloat(newValue))
+            update(greenValueLabel)
+            update(greenSlider)
+            update(greenValueTextField)
+        default:
+            updateCurrentColor(for: .blue, on: CGFloat(newValue))
+            update(blueValueLabel)
+            update(blueSlider)
+            update(blueValueTextField)
+        }
+        updateBoxColor()
+    }
+}
+
+
