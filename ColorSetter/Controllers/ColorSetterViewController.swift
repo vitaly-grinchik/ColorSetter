@@ -9,7 +9,7 @@ import UIKit
 
 class ColorSetterViewController: UIViewController {
 
-    // MARK: - IBOutlets
+    // MARK: - IB Outlets
     @IBOutlet weak var colorBoxView: UIView!
     // Slider values
     @IBOutlet weak var redValueLabel: UILabel!
@@ -137,11 +137,11 @@ class ColorSetterViewController: UIViewController {
         case let slider as UISlider:
             switch slider {
             case redSlider:
-                redSlider.value = Float(currentColor.redValue)
+                redSlider.setValue(Float(currentColor.redValue), animated: true)
             case greenSlider:
-                greenSlider.value = Float(currentColor.greenValue)
+                greenSlider.setValue(Float(currentColor.greenValue), animated: true)
             default:
-                blueSlider.value = Float(currentColor.blueValue)
+                blueSlider.setValue(Float(currentColor.blueValue), animated: true)
             }
             
         case let textField as UITextField:

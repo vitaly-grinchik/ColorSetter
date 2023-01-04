@@ -13,10 +13,6 @@ protocol ColorSetterViewControllerDelegate {
 
 class StartViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let colorSetterVC = segue.destination as? ColorSetterViewController else { return }
         colorSetterVC.currentColor = view.backgroundColor
