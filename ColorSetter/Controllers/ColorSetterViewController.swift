@@ -26,7 +26,7 @@ class ColorSetterViewController: UIViewController {
     
     // MARK: - Public properties
     var currentColor: UIColor!
-    var delegate: ColorSetterViewControllerDelegate!
+    var delegate: ColorSetterViewControllerDelegate! // Создаем экземпляр протокола, этакая "ссылка" на другой класс, где реализуются методы протокла
     
     // MARK: - Private
     private var textFiledPreviousValue = "" // "Buffer" to store textfiled value before it's going to be cleared
@@ -71,7 +71,7 @@ class ColorSetterViewController: UIViewController {
     }
   
     @IBAction func doneButtonTapped() {
-        delegate.setBackgroundColor(currentColor)
+        delegate.setBackgroundColor(currentColor) // вызываем метод протокола
         dismiss(animated: true)
     }
     
