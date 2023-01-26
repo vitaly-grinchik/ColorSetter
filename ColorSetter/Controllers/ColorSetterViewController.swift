@@ -38,7 +38,7 @@ class ColorSetterViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setupUI()   // Initial UI setup
         updateBoxColor()
     }
     
