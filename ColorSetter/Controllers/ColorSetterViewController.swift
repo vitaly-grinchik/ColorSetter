@@ -236,6 +236,7 @@ extension ColorSetterViewController: UITextFieldDelegate {
         // Prevent to enter invalid value
         let newValue = Double(textField.text ?? "") ?? 2
         
+        // Check for correct value filled in
         if newValue > 1 {
             textField.text = textFiledPreviousValue
             return
